@@ -1,0 +1,66 @@
+<div class="box">
+    <article class="media">
+        <figure class="media-left">
+            <span class="select">
+                <form class="orderSubmit" action="" method="get">
+                    <select name="sortPostsBy">
+                        <option value="top">Top</option>
+                        <option value="new">Newest</option>
+                    </select>
+                </form>
+            </span>
+        </figure>
+        <div class="media-content"> </div>
+        <div class="media-right">
+            <form action="" method="get">
+                <p class="control has-addons has-icon">
+                    <input class="input" type="text" placeholder="Find a post" name="query">
+                    <i class="fa fa-search"></i>
+                    <button class="button is-info">
+                    Search
+                    </button>
+                </p>
+            </form>
+        </div>
+    </article>
+</div>
+{{#each posts }}
+<div class="box">
+    <article class="media">
+        <figure class="media-left">
+            <a data-id="{{ _id }}" class="button is-upvote is-primary is-large">
+                <span class="icon">
+                    <i class="fa fa-chevron-up"></i>
+                </span>
+                <br />
+                <span class="post-upvotes">{{ upvotes }}</span>
+            </a>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <p class="main-post">
+                    <a class="title is-4 post-title" href="{{ url }}">{{ title }} </a>
+                    <br> {{ description }}<br>
+                    <small><a href="/users/profile/{{ author._id }}"> {{ author.first_name }} {{ author.last_name }}</a> · <a href="post/{{ slug }}">Comments ({{countComments comments}})</a> · {{ humanize datePosted }}</small>
+                </p>
+            </div>
+        </div>
+    </article>
+</div>
+{{else}}
+<h1 class="title is-1 has-text-centered"> Whoops, Nothing To See Here ☹️😳😫</h1>
+{{/each}}
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Zak</strong> by Nauman Ahmad.
+            </p>
+            <p>
+                <a class="icon" href="https://github.com/itsnauman">
+                    <i class="fa fa-github"></i>
+                </a>
+            </p>
+        </div>
+    </div>
+</footer>

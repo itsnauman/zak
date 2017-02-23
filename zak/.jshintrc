@@ -1,0 +1,30 @@
+{
+    // options picked from airbnb .jshintrc:
+    // https://github.com/airbnb/javascript/blob/master/linters/.jshintrc
+
+    // allow node globals (process, module, etc.)
+    "node": true,
+
+    // allow mocha globals (describe, it, etc.)
+    "mocha": true,
+	"browser": true,
+	"jquery": true,
+	"indent": 4,
+    // use === and !==
+    "eqeqeq": true,
+
+    // prohibit use of a variable before it is defined.
+    "latedef": "nofunc",
+
+    // uncomment this for sanity -> max line length 100 characters
+    // "maxlen": 100,
+
+    // require capitalized names for constructor functions.
+    "newcap": true,
+
+    // prohibit use of explicitly undeclared variables.
+    "undef": true,
+
+    // warn when variables are defined but never used.
+    "unused": true
+}

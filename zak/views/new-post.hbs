@@ -1,0 +1,27 @@
+{{#if error }}
+    <div class="notification is-danger">
+      <button class="delete"></button>
+      {{ error }}
+    </div>
+{{/if}}
+
+<div class="newpost">
+    <h1 class="title is-3">New Post</h1>
+    <form action="" method="post">
+        <label class="label">URL</label>
+        <p class="control has-icon">
+            <input class="input" type="url" placeholder="Drop that dank link here!" name="url" required>
+            <i class="fa fa-link"></i>
+        </p>
+        <label class="label">Title</label>
+        <p class="control">
+            <input class="input" type="text" placeholder="The dank title goes here!" name="title" required>
+        </p>
+        <label class="label">Description</label>
+        <p class="control">
+            <textarea class="textarea" placeholder="So what is it about?" name="description"></textarea>
+        </p>
+            <button class="button is-primary">Submit</button>
+        </p>
+    </form>
+</div>

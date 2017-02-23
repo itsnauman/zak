@@ -1,0 +1,69 @@
+<div class="box">
+    <article class="media">
+        <figure class="media-left">
+            <a data-id="{{ post._id }}" class="button is-upvote is-primary is-large">
+                <span class="icon">
+                    <i class="fa fa-chevron-up"></i>
+                </span>
+                <br />
+                <span class="post-upvotes">{{ post.upvotes }}</span>
+            </a>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong class="title is-4"><a href="{{ url }}">{{ post.title }}</a></strong>
+                    <br> {{ post.description }}<br>
+                    <small><a href="/users/profile/{{ post.author._id }}"> {{ post.author.first_name }} {{ post.author.last_name }}</a> · {{ humanize post.datePosted }}</small>
+                </p>
+            </div>
+        </div>
+    </article>
+</div>
+<h2 class="title is-3"> Comments </h2>
+<div class="box">
+    <div class="content post-comments">
+    {{#each post.comments}}
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <img src="{{ poster.profile_picture }}">
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>{{poster.first_name}} {{poster.last_name}}</strong>
+                        <br>{{comment}}<br>
+                        <small>{{humanize datePosted}}</small>
+                    </p>
+                </div>
+            </div>
+            {{#if ../user}}
+                {{#if (isEqual ../user._id poster._id) }}
+                    <div data-id="{{_id}}" data-post="{{../post._id}}" class="media-right" id="delete-comment">
+                        <button class="delete"></button>
+                    </div>
+                {{/if}}
+            {{/if}}
+        </article>
+    {{/each}}
+    </div>
+    {{#if user}}
+        <article class="media new-comment">
+            <div class="media-content">
+                <form action="/post/comment" method="post">
+                    <p class="control">
+                        <input type="hidden" value="{{ post.slug }}" name="slug" />
+                        <textarea name="comment" class="textarea" placeholder="Add a comment..." required></textarea>
+                    </p>
+                    <p class="control">
+                        <button class="button">Post comment</button>
+                    </p>
+                </form>
+            </div>
+        </article>
+    {{else}}
+        <h2 class="title is-4"> <a href="/auth/login">Log In</a> To Comment</h2>
+    {{/if}}
+</div>

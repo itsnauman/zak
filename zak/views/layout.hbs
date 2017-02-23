@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src='/js/app.js'></script>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="nav-left">
+                <a class="nav-item" href="/">
+                    <p class="title is-2">Zak</p>
+                </a>
+            </div>
+            <div class="nav-right nav-menu">
+                <a class="nav-item" href="/">
+                    Home
+                </a>
+                <span class="nav-item">
+                    {{#if user}}
+                    <a class="nav-item" href="/users/profile">
+                        <span class="icon">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </a>
+                    <span class="nav-item">
+                        <a class="button" href="/new-post">
+                            <span class="icon">
+                                <i class="fa fa-plus"></i>
+                            </span>
+                            <span>New Post</span>
+                        </a>
+                    </span>
+                    <a class="button" href="/auth/logout">
+                        <span class="icon">
+                            <i class="fa fa-facebook"></i>
+                        </span>
+                        <span>Logout</span>
+                    </a>
+                    {{else}}
+                    <a class="button" href="/auth/login">
+                        <span class="icon">
+                            <i class="fa fa-facebook"></i>
+                        </span>
+                        <span>Login</span>
+                    </a>
+                    {{/if}}
+                </span>
+            </div>
+        </nav>
+        <div class="main">
+            {{{body}}}
+        </div>
+    </body>
+</html>

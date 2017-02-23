@@ -1,0 +1,43 @@
+<div class="content">
+    <div class="card">
+        <div class="card-image">
+            <figure class="image is-4by4">
+                <img src="{{ user.profile_picture }}" alt="">
+            </figure>
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-5">{{user.first_name}} {{user.last_name}}</p>
+                    <p class="subtitle is-6">{{user.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if user.posts}}
+    <h2>Posts</h2>
+    {{#each user.posts}}
+    <div class="box" data-id="{{ _id }}">
+        <article class="media">
+            <figure class="media-left">
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p class="main-post">
+                        <a class="title is-4 post-title" href="{{ url }}">{{ title }} </a>
+                        <br> {{ description }}<br>
+                    </p>
+                </div>
+            </div>
+            {{#if ../canModifyPosts}}
+            <div data-id="{{ _id }}" class="media-right post-delete">
+                <button class="delete"></button>
+            </div>
+            {{/if}}
+        </article>
+    </div>
+    {{/each}}
+    {{else}}
+    <h2 class="title is-4">You don't have any posts yet! 😫😣</h2>
+    {{/if}}
+</div>
